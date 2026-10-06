@@ -33,11 +33,6 @@
             "检测战斗"
         ]
     },
-    "识别fight图标": {
-        "recognition": "TemplateMatch",
-        "template": "fight.png",
-        "action": "DoNothing"
-    },
     "检测港口": {
         "recognition": "TemplateMatch",
         "template": "port.png",
@@ -183,6 +178,9 @@
         ],
         "action": "ClickKey",
         "key": 4,
+        "on_error": [
+            "主界面"
+        ],
         "next": [
             "检测广告2"
         ]
@@ -197,6 +195,9 @@
             150
         ],
         "action": "Click",
+        "on_error": [
+            "主界面"
+        ],
         "next": [
             "主界面"
         ]
@@ -212,6 +213,9 @@
         "expected": "关闭",
         "action": "ClickKey",
         "key": 4,
+        "on_error": [
+            "主界面"
+        ],
         "next": [
             "检测广告4"
         ]
@@ -226,6 +230,9 @@
         ],
         "expected": "关闭",
         "action": "Click",
+        "on_error": [
+            "主界面"
+        ],
         "next": [
             "主界面"
         ]
