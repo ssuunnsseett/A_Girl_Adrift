@@ -1,26 +1,263 @@
 {
-    "MyTask1": {},
-    "MyTask2": {},
-    "MyTask3": {},
-    "FindSmallestNumber": {
-        "recognition": "Custom",
-        "custom_recognition": "find_smallest_number",
-        "custom_recognition_param": {
-            "candidate_rois": [
-                [100, 100, 200, 100],
-                [300, 100, 200, 100]
-            ]
-        },
-        "action": "Custom",
-        "custom_action": "click_target",
-        "custom_action_param": {
-            "target": [10, 20]
-        }
+    "主界面": {
+        "next": [
+            "检测战斗",
+            "检测港口",
+            "检测转盘",
+            "检测捕获田鼠",
+            "检测炼金术技能",
+            "检测看广告升级",
+            "检测看广告得物品",
+            "检测继续",
+            "检测关闭弹窗",
+            "检测救济品",
+            "检测广告1",
+            "检测广告3",
+            "章鱼",
+            "海星",
+            "虾",
+            "检测任务完成",
+            "主界面"
+        ]
     },
-    "RecognizeNumber": {
-        "recognition": "OCR"
+    "检测战斗": {
+        "recognition": "TemplateMatch",
+        "template": "fight1.png",
+        "action": "Click",
+        "repeat": 30,
+        "timeout": 5,
+        "on_error": [
+            "主界面"
+        ],
+        "next": [
+            "检测战斗"
+        ]
     },
-    "OcrTask": {
-        "recognition": "OCR"
+    "识别fight图标": {
+        "recognition": "TemplateMatch",
+        "template": "fight.png",
+        "action": "DoNothing"
+    },
+    "检测港口": {
+        "recognition": "TemplateMatch",
+        "template": "port.png",
+        "action": "Click",
+        "next": [
+            "全部出售"
+        ]
+    },
+    "全部出售": {
+        "recognition": "TemplateMatch",
+        "template": "sale_all.png",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测转盘": {
+        "recognition": "TemplateMatch",
+        "template": "turntable.png",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测炼金术技能": {
+        "recognition": "OCR",
+        "expected": "免费使用",
+        "action": "Click",
+        "target": [
+            623,
+            619
+        ],
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测捕获田鼠": {
+        "recognition": "TemplateMatch",
+        "template": "capture_vole_start.png",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "章鱼": {
+        "recognition": "TemplateMatch",
+        "template": "vole1.png",
+        "roi": [
+            144,
+            244,
+            463,
+            300
+        ],
+        "action": "Click",
+        "on_error": [
+            "主界面"
+        ],
+        "timeout": 10,
+        "next": [
+            "海星",
+            "虾",
+            "章鱼"
+        ]
+    },
+    "海星": {
+        "recognition": "TemplateMatch",
+        "template": "vole2.png",
+        "roi": [
+            144,
+            244,
+            463,
+            300
+        ],
+        "action": "Click",
+        "next": [
+            "章鱼"
+        ]
+    },
+    "虾": {
+        "recognition": "TemplateMatch",
+        "template": "vole3.png",
+        "roi": [
+            144,
+            244,
+            463,
+            300
+        ],
+        "action": "Click",
+        "next": [
+            "章鱼"
+        ]
+    },
+    "检测看广告升级": {
+        "recognition": "TemplateMatch",
+        "template": "ad_update.png",
+        "roi": [
+            620,
+            214,
+            100,
+            500
+        ],
+        "action": "Click",
+        "next": [
+            "检测关闭弹窗"
+        ]
+    },
+    "检测看广告得物品": {
+        "recognition": "TemplateMatch",
+        "template": "ad_get_item.png",
+        "action": "Click",
+        "roi": [
+            620,
+            214,
+            100,
+            500
+        ],
+        "next": [
+            "检测关闭弹窗"
+        ]
+    },
+    "检测救济品": {
+        "recognition": "TemplateMatch",
+        "template": "relief/",
+        "roi": [
+            0,
+            100,
+            1080,
+            300
+        ],
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测广告1": {
+        "recognition": "TemplateMatch",
+        "template": "ad/",
+        "roi": [
+            0,
+            0,
+            720,
+            150
+        ],
+        "action": "ClickKey",
+        "key": 4,
+        "next": [
+            "检测广告2"
+        ]
+    },
+    "检测广告2": {
+        "recognition": "TemplateMatch",
+        "template": "ad/",
+        "roi": [
+            0,
+            0,
+            720,
+            150
+        ],
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测广告3": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            720,
+            120
+        ],
+        "expected": "关闭",
+        "action": "ClickKey",
+        "key": 4,
+        "next": [
+            "检测广告4"
+        ]
+    },
+    "检测广告4": {
+        "recognition": "OCR",
+        "roi": [
+            0,
+            0,
+            720,
+            120
+        ],
+        "expected": "关闭",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测关闭弹窗": {
+        "recognition": "TemplateMatch",
+        "template": "close/",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测任务完成": {
+        "recognition": "TemplateMatch",
+        "template": "任务完成.png",
+        "roi": [
+            88,
+            233,
+            100,
+            700
+        ],
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
+    },
+    "检测继续": {
+        "recognition": "OCR",
+        "expected": "继续",
+        "action": "Click",
+        "next": [
+            "主界面"
+        ]
     }
 }
