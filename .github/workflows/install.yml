@@ -25,7 +25,10 @@ on:
       - "assets/**"
       - "**.py"
   workflow_dispatch:
-
+  
+permissions:
+  contents: write # 允许工作流向仓库写入内容（包括创建 release）
+  
 jobs:
   meta:
     runs-on: ubuntu-latest
