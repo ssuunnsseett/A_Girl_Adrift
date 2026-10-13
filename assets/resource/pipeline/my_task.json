@@ -1,28 +1,186 @@
 {
     "主界面": {
         "next": [
+            "检测关闭弹窗",
             "检测战斗",
-            "检测晶石翻倍",
-            //            "检测转盘",
-            //            "检测捕获田鼠",
-            //           "离开黑市",
-            //           "传说级大鱼",
-            //          "检测炼金术技能",
             "检测看广告升级",
             "检测看广告得物品",
             "检测成就奖励",
             "检测继续",
             "检测救济品",
-            "检测广告1",
-            "检测广告3",
             "检测关闭按钮",
             "检测任务完成",
-            "满能量",
-            "检测关闭弹窗",
-            "检测Auto",
             "检测港口",
             "全部出售",
             "主界面"
+        ]
+    },
+    "刷琥珀": {
+        "next": [
+            "启动钓鱼"
+        ]
+    },
+    "启动页": {
+        "recognition": "OCR",
+        "expected": "T",
+        "roi": [
+            269,
+            1133,
+            77,
+            30
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "唤醒"
+        ]
+    },
+    "唤醒": {
+        "recognition": "TemplateMatch",
+        "template": "唤醒.png",
+        "roi": [
+            315,
+            958,
+            89,
+            90
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "next": [
+            "启动钓鱼"
+        ]
+    },
+    "启动钓鱼": {
+        "recognition": "TemplateMatch",
+        "template": "启动钓鱼.png",
+        "roi": [
+            319,
+            960,
+            80,
+            103
+        ],
+        "action": "LongPress",
+        "post_delay": 1000,
+        "next": [
+            "钓到鱼"
+        ]
+    },
+    "钓到鱼": {
+        "recognition": "TemplateMatch",
+        "template": "钓到鱼.png",
+        "roi": [
+            332,
+            960,
+            57,
+            103
+        ],
+        "action": "Click",
+        "post_delay": 2000,
+        "on_error": [
+            "钓到鱼"
+        ],
+        "next": [
+            "传说鱼"
+        ]
+    },
+    "传说鱼": {
+        "recognition": "TemplateMatch",
+        "template": "传说鱼.png",
+        "roi": [
+            115,
+            145,
+            74,
+            80
+        ],
+        "action": "Click",
+        "target": [
+            620,
+            103
+        ],
+        "next": [
+            "保存存档"
+        ]
+    },
+    "保存存档": {
+        "recognition": "OCR",
+        "expected": "保",
+        "roi": [
+            236,
+            396,
+            84,
+            44
+        ],
+        "action": "Click",
+        "next": [
+            "保存"
+        ]
+    },
+    "保存": {
+        "action": "Click",
+        "target": [
+            193,
+            784
+        ],
+        "post_delay": 3000,
+        "next": [
+            "读取"
+        ]
+    },
+    "读取": {
+        "recognition": "OCR",
+        "expected": "读",
+        "post_delay": 5000,
+        "roi": [
+            468,
+            394,
+            75,
+            50
+        ],
+        "action": "Click",
+        "next": [
+            "等待"
+        ]
+    },
+    "等待": {
+        "recognition": "OCR",
+        "expected": "请",
+        "roi": [
+            314,
+            620,
+            92,
+            40
+        ],
+        "action": "DoNothing",
+        "timeout": -1,
+        "next": [
+            "继续"
+        ]
+    },
+    "继续": {
+        "pre_delay": 3000,
+        "action": "Click",
+        "post_delay": 5000,
+        "target": [
+            207,
+            781
+        ],
+        "next": [
+            "观看广告"
+        ]
+    },
+    "观看广告": {
+        "recognition": "OCR",
+        "expected": "广",
+        "roi": [
+            278,
+            725,
+            165,
+            60
+        ],
+        "action": "Click",
+        "post_delay": 3000,
+        "next": [
+            "启动页"
         ]
     },
     "检测战斗": {
@@ -30,7 +188,7 @@
         "template": "fight1.png",
         "action": "Click",
         "repeat": 30,
-        "timeout": 5000,
+        "timeout": 3000,
         "on_error": [
             "主界面"
         ],
@@ -109,120 +267,6 @@
             "主界面"
         ]
     },
-    "检测Auto": {
-        "recognition": "TemplateMatch",
-        "template": "选择目的地.png",
-        "action": "Click",
-        "target": [
-            214,
-            37
-        ],
-        "next": [
-            "开启Auto"
-        ]
-    },
-    "开启Auto": {
-        "recognition": "TemplateMatch",
-        "template": "开始自动航行.png",
-        "action": "Click",
-        "next": [
-            "主界面"
-        ]
-    },
-    "检测转盘": {
-        "recognition": "TemplateMatch",
-        "template": "turntable.png",
-        "action": "Click",
-        "next": [
-            "主界面"
-        ]
-    },
-    "检测炼金术技能": {
-        "recognition": "OCR",
-        "expected": "免费使用",
-        "action": "Click",
-        "target": [
-            623,
-            619
-        ],
-        "next": [
-            "主界面"
-        ]
-    },
-    "检测捕获田鼠": {
-        "recognition": "TemplateMatch",
-        "template": "capture_vole_start.png",
-        "action": "Click",
-        "pre_delay": 10000,
-        "next": [
-            "捕获田鼠"
-        ]
-    },
-    "捕获田鼠": {
-        "recognition": "TemplateMatch",
-        "template": "vole/",
-        "action": "DoNothing",
-        "timeout": 10000,
-        "next": [
-            "章鱼",
-            "虾",
-            "海星"
-        ],
-        "on_error": [
-            "主界面"
-        ]
-    },
-    "章鱼": {
-        "recognition": "TemplateMatch",
-        "template": "vole1.png",
-        "roi": [
-            144,
-            244,
-            463,
-            300
-        ],
-        "action": "Click",
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "捕获田鼠"
-        ]
-    },
-    "海星": {
-        "recognition": "TemplateMatch",
-        "template": "vole2.png",
-        "roi": [
-            144,
-            244,
-            463,
-            300
-        ],
-        "action": "Click",
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "捕获田鼠"
-        ]
-    },
-    "虾": {
-        "recognition": "TemplateMatch",
-        "template": "vole3.png",
-        "roi": [
-            144,
-            244,
-            463,
-            300
-        ],
-        "action": "Click",
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "捕获田鼠"
-        ]
-    },
     "检测看广告升级": {
         "recognition": "TemplateMatch",
         "template": "ad_update.png",
@@ -265,76 +309,6 @@
             "主界面"
         ]
     },
-    "检测广告1": {
-        "recognition": "TemplateMatch",
-        "template": "ad/",
-        "roi": [
-            0,
-            0,
-            720,
-            150
-        ],
-        "action": "ClickKey",
-        "key": 4,
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "检测广告2"
-        ]
-    },
-    "检测广告2": {
-        "recognition": "TemplateMatch",
-        "template": "ad/",
-        "roi": [
-            0,
-            0,
-            720,
-            150
-        ],
-        "action": "Click",
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "主界面"
-        ]
-    },
-    "检测广告3": {
-        "recognition": "OCR",
-        "expected": "关闭",
-        "roi": [
-            0,
-            0,
-            720,
-            150
-        ],
-        "action": "ClickKey",
-        "key": 4,
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "检测广告4"
-        ]
-    },
-    "检测广告4": {
-        "recognition": "OCR",
-        "expected": "关闭",
-        "roi": [
-            0,
-            0,
-            720,
-            150
-        ],
-        "action": "Click",
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "主界面"
-        ]
-    },
     "检测关闭弹窗": {
         "recognition": "TemplateMatch",
         "template": "close/",
@@ -360,33 +334,6 @@
             "主界面"
         ]
     },
-    "满能量": {
-        "recognition": "TemplateMatch",
-        "template": "满能量.png",
-        "roi": [
-            30,
-            1128,
-            70,
-            100
-        ],
-        "action": "Click",
-        "next": [
-            "钓鱼速度增加"
-        ]
-    },
-    "钓鱼速度增加": {
-        "action": "Click",
-        "target": [
-            641,
-            882
-        ],
-        "on_error": [
-            "主界面"
-        ],
-        "next": [
-            "检测继续1"
-        ]
-    },
     "检测继续": {
         "recognition": "OCR",
         "expected": "继续",
@@ -409,53 +356,6 @@
             557,
             524
         ],
-        "next": [
-            "主界面"
-        ]
-    },
-    "传说级大鱼": {
-        "recognition": "OCR",
-        "expected": [
-            "传说级大鱼"
-        ],
-        "action": "Click",
-        "target": [
-            678,
-            461
-        ],
-        "next": [
-            "前往狂风暴雨之地"
-        ]
-    },
-    "前往狂风暴雨之地": {
-        "action": "Click",
-        "post_delay": 3000,
-        "target": [
-            673,
-            467
-        ],
-        "next": [
-            "移动狂风暴雨之地"
-        ]
-    },
-    "移动狂风暴雨之地": {
-        "recognition": "OCR",
-        "expected": "移动",
-        "action": "Click",
-        "next": [
-            "主界面"
-        ]
-    },
-    "检测晶石翻倍": {
-        "recognition": "OCR",
-        "roi": [
-            257,
-            700,
-            300,
-            150
-        ],
-        "expected": "观看广",
-        "action": "Click",
         "next": [
             "主界面"
         ]
