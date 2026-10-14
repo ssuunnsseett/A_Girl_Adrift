@@ -17,7 +17,11 @@
     },
     "刷琥珀": {
         "next": [
-            "启动钓鱼"
+            "启动钓鱼",
+            "钓到鱼",
+            "传说鱼",
+            "保存存档",
+            "启动页"
         ]
     },
     "启动页": {
@@ -30,7 +34,11 @@
             30
         ],
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 1000,
+        "timeout": -1,
+        "on_error": [
+            "刷琥珀"
+        ],
         "next": [
             "唤醒"
         ]
@@ -45,7 +53,11 @@
             90
         ],
         "action": "Click",
-        "post_delay": 2000,
+        "post_delay": 500,
+        "timeout": -1,
+        "on_error": [
+            "刷琥珀"
+        ],
         "next": [
             "启动钓鱼"
         ]
@@ -60,7 +72,10 @@
             103
         ],
         "action": "LongPress",
-        "post_delay": 1000,
+        "on_error": [
+            "刷琥珀"
+        ],
+        "timeout": -1,
         "next": [
             "钓到鱼"
         ]
@@ -75,10 +90,8 @@
             103
         ],
         "action": "Click",
-        "post_delay": 2000,
-        "on_error": [
-            "钓到鱼"
-        ],
+        "repeat": 2,
+        "timeout": -1,
         "next": [
             "传说鱼"
         ]
@@ -93,6 +106,9 @@
             80
         ],
         "action": "Click",
+        "on_error": [
+            "刷琥珀"
+        ],
         "target": [
             620,
             103
@@ -129,7 +145,6 @@
     "读取": {
         "recognition": "OCR",
         "expected": "读",
-        "post_delay": 5000,
         "roi": [
             468,
             394,
@@ -137,6 +152,11 @@
             50
         ],
         "action": "Click",
+        "post_delay": 3000,
+        "timeout": 35000,
+        "on_error": [
+            "继续"
+        ],
         "next": [
             "等待"
         ]
@@ -151,7 +171,6 @@
             40
         ],
         "action": "DoNothing",
-        "timeout": -1,
         "next": [
             "继续"
         ]
@@ -159,13 +178,17 @@
     "继续": {
         "pre_delay": 3000,
         "action": "Click",
-        "post_delay": 5000,
         "target": [
             207,
             781
         ],
+        "post_delay": 2000,
         "next": [
             "观看广告"
+        ],
+        "timeout": 10000,
+        "on_error": [
+            "启动页"
         ]
     },
     "观看广告": {
@@ -178,7 +201,7 @@
             60
         ],
         "action": "Click",
-        "post_delay": 3000,
+        "post_delay": 2000,
         "next": [
             "启动页"
         ]
@@ -226,34 +249,8 @@
         "action": "Click",
         "repeat": 2,
         "post_delay": 20000,
-        "on_error": [
-            "离开黑市"
-        ],
         "next": [
             "点击空白处"
-        ]
-    },
-    "离开黑市": {
-        "recognition": "TemplateMatch",
-        "template": "黑市.png",
-        "action": "Click",
-        "target": [
-            355,
-            40
-        ],
-        "next": [
-            "前往稀有鱼"
-        ],
-        "on_error": [
-            "主界面"
-        ]
-    },
-    "前往稀有鱼": {
-        "recognition": "TemplateMatch",
-        "template": "稀有鱼.png",
-        "action": "Click",
-        "next": [
-            "返回主界面"
         ]
     },
     "返回主界面": {
@@ -313,10 +310,10 @@
         "recognition": "TemplateMatch",
         "template": "close/",
         "action": "Click",
-        "next": [
+        "on_error": [
             "主界面"
         ],
-        "on_error": [
+        "next": [
             "主界面"
         ]
     },
